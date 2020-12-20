@@ -3,14 +3,12 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var catalogRouter = require("./routes/catalog");
-
-const mongoose = require("mongoose");
-const mongoDB =
-  "mongodb+srv://aungmcs:playboy007@cluster0.yoknm.mongodb.net/local_library?retryWrites=true&w=majority";
 
 var app = express();
 
@@ -46,7 +44,7 @@ app.use(function (err, req, res, next) {
 
 // ----------- DATABASE CONNECTION ---------------------
 mongoose.connect(
-  mongoDB,
+  process.env.MONGO_DB,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     console.log("The database connection has the error of ", err);
