@@ -21,13 +21,13 @@ AuthorSchema.virtual("lifespan").get(function () {
 });
 
 // Virtual for author's DOB and DOD pretty format
-AuthorSchema.virtual("dob_formated").get(function () {
+AuthorSchema.virtual("dob_formatted").get(function () {
   return this.date_of_birth
     ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED)
     : "";
 });
 
-AuthorSchema.virtual("dod_formated").get(function () {
+AuthorSchema.virtual("dod_formatted").get(function () {
   return this.date_of_death
     ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED)
     : "";
